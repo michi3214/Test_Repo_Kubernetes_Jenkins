@@ -1,0 +1,19 @@
+version: "3.8"
+
+networks:
+  Projekt_Network:
+    driver: bridge
+
+services:
+    srv_test_docker:
+        image: sws/srv-test-docker
+        hostname: srv-test-docker
+        container_name: srv-test-docker
+        ports:
+            - 3000:3000
+        build:
+            context: ./Webserver
+            dockerfile: DOCKERFILE
+        restart: unless-stopped
+        networks:
+            - Projekt_Network
